@@ -1,141 +1,86 @@
-
-// clase4
-
-// Objetos
-let user = {
-    name: "Justin",
-    lastName: "Imbaquingo",
-    address: {
-        city : "Quito"
-    },
-    friends: ["Sebas", "Diego", "Muela"],
+//Objetos
+const user = {
+    name:"Justin",
+    lastName:"Imbaquingo",
     age:20,
-    isActive: true,
-    password: "123"
-}
-
-user.avatar = "https://avatar.png"
-
-delete user.password
-
-console.log(user.address)
-console.log(user.lastName)
-console.log(user.name)
-
-
-
-// ES6 - Destructuracion de objetos
-const {name, lastName, address:direccion, age, avatar} = user
-
-console.log(name)
-console.log(lastName)
-console.log(direccion)
-
-const otherInformation = {
-    status: "active",
-    phone:"0962122064",
-    friends: ["Maria", "Jose"],
-    sendMail(){
-        console.log(`Send mail to ${otherInformation.friends[0]}`)
+    address:{
+        city:"Quito",
+        telephone:"0962122064",
+        streets:{
+            principal:"Av. Carlos Villasis",
+            secondary:"Oe5A"
+        }
     }
+
 }
+const {name,lastName,age,address:{streets}} = user
+console.log(name,lastName,age,streets)
 
 
-
-// ES6 - operador de programacion - spread operator (...)
-const allInformation ={
-    ...user,
-    ...otherInformation
-}
-console.log (allInformation)
-console.log (Object.keys(user).includes(""))
-
-
-
-//Function  - callback
-function MostrarBienvenida (nombre){
-    console.log(`Bienvenido ${nombre}`
-    )
-}
-function registrarUsuario(callback){
-    const user = "Justin"
-    callback(user)
-}
-registrarUsuario (MostrarBienvenida) // mandamos una funcion en ves de un string(en este caso)
-
-
-
-// Arrays
-const products= ["PLAY","PC", "MONITOR", "TECLADO"]
-const prices = [1000, 1500, 2000, 500]
-
-products.forEach((product, index)=>{console.log(index, product)}) //callback 
-
-
-
-// MAP - 3 formas
-const newProductsOne = products.map((product)=>{   // void[]el arreglo puede ser cualquier tipo
-    return product.toUpperCase()
-})        
-
-const newProductsTwo = products.map((product)=>(  // sin return, cambia a parentesis
-    product.toUpperCase()
-))        
-
-const newProductsThree = products.map (p=> p.toUpperCase())  
-
-console.log(newProductsOne)
-
-
-// Filter
-const items = products.filter((p)=>p !== "PC")
-console.log(items)
-
-
-// Concat
-const newItems= [...products,...prices]
-console.log(newItems)
-
-
-// Find
-const findItems = products.find((p)=>p==="PCs")
-findItems ? console.log(findItem): console.log("No hay resultados")
-
-
-// Push
-products.push ("MONITOR")
-products.unshift("CELULAR")
-
-
-//pop
-products.pop()
-products.shift()
-
-
-//Includes
-products.includes("MOUSE") ? console.log("Existe"): console.log("No existe") 
-
-
-// Proppiedad lenght
-products.length === 3 ? console.log("50% de descuento") : console.log("No hay descuentos")
-
-
-//Slice
-const newItemsSlice = products.slice (0,2)
-
-
-//Reduce
-const subTotal = prices.reduce((ac,price)=>ac+price,0)
-//                                          0+1000
-//                                       1000+1500   
-//                                       2500+2000   
-//                                       4500+500   
-//                                       5000   
-console.log(subTotal)
-
-
-
-
-
-
-
+//Arreglos 
+const users=[
+    {
+        name:"Justin",
+        lastName:"Imbaquingo",
+        age:20
+    },
+    {
+        name:"Adrian",
+        lastName:"Rodríguez",
+        age:18
+    },
+    {
+        name:"Josue",
+        lastName:"Guerra",
+        age:20
+    },
+    {
+        name:"Rebecca",
+        lastName:"Estefania",
+        age:21
+    },
+    {
+        name:"Evelin",
+        lastName:"Campoverde",
+        age:19
+    },
+    {
+        name:"Carla",
+        lastName:"Villegas",
+        age:40
+    },
+    {
+        name:"Vale",
+        lastName:"ㅤ",
+        age:20
+    },
+    {
+        name:"Melu",
+        lastName:"ㅤ",
+        age:22
+    },
+    {
+        name:"Andrés",
+        lastName:"Aguilar",
+        age:18
+    },
+    {
+        name:"Laura",
+        lastName:"Campos",
+        age:25
+    },
+    {
+        name:"Fernando",
+        lastName:"Sánchez",
+        age:21
+    },
+]
+const usersBDD = users.map((u)=>{
+    return{
+        name:u.name.toUpperCase(),
+        lastName:u.lastName.toUpperCase()
+    }
+ })
+ console.log("Personas que quizá conozcas");
+ console.log(usersBDD);
+ 
